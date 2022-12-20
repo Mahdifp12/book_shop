@@ -1,0 +1,20 @@
+{% extends 'home_base/layout.html' %}
+
+{% block title %}
+    تماس با ما
+{% endblock %}
+
+{% block content %}
+
+    {% if messages %}
+    {% for message in messages %}
+        <h3>{{ message }}</h3>
+    {% endfor %}
+    {% endif %}
+
+    <form action="{% url 'contact-us' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">ارسال</button>
+    </form>
+{% endblock %}

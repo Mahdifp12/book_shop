@@ -1,0 +1,25 @@
+{% load render_partial %}
+
+<title>{% block title %}
+
+{% endblock %}</title>
+
+{% include "home_base/site_head_link_reference.html" %}
+
+{% render_partial 'home_module.views.site_navbar_component' %}
+
+{% render_partial 'home_module.views.site_loginform_component' %}
+
+{% render_partial 'home_module.views.site_header_component' %}
+
+{% block content %}{% endblock %}
+
+
+{% render_partial 'home_module.views.site_footer_component' %}
+<!-- loader  -->
+
+<div class="loader-container">
+    <img src="/static/image/loader-img.gif" alt="">
+</div>
+
+{% include "home_base/site_script_reference.html" %}
