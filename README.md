@@ -8,11 +8,17 @@
 
 
 ## requirements
-```python
+```bash
 pip install python3.9
 pip install Django
 pip install django-render-partial
 pip install djangorestframework
-
+pip install Unidecode
 ```
-    
+
+## or
+
+## requirement file
+```bash
+pip install -m requirements.txt
+```
