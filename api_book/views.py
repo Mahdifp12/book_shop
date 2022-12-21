@@ -14,7 +14,7 @@ class ListApiBooks(APIView):
 
     def get(self, request):
         if request.method == "GET":
-            books = Book.objects.all()
+            books = Book.objects.all().order_by('-id')
             serializer = BookSerializer(books, many=True)
             return Response(data=serializer.data, status=status.HTTP_200_OK)
 
