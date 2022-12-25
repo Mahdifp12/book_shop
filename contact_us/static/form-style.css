@@ -1,6 +1,36 @@
 form {
-padding: 25px;
-margin: 25px;
-box-shadow: 0 2px 5px #383737;
-background: #e1ff82;
+    padding: 25px;
+    margin: 25px;
+    box-shadow: 0 2px 5px #383737;
+    background: #aaffcf;
+    font-size: medium;
+    border-radius: 4px;
+}
+
+
+input, textarea {
+width: calc(100% - 18px);
+padding: 8px;
+margin-bottom: 20px;
+border: 1px solid;
+border-radius: 4px;
+outline: none;
+}
+
+input::placeholder {
+color: #666;
+}
+
+button {
+width: 100%;
+padding: 10px;
+border: none;
+background: #1c87c9;
+font-size: 16px;
+font-weight: 400;
+color: #fff;
+}
+
+button:hover {
+background: #2371a0;
 }

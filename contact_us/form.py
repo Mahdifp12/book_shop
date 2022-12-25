@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import TextInput, EmailInput, Textarea
 from .models import ContactUs
 
 

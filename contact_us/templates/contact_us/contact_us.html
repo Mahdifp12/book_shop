@@ -1,20 +1,23 @@
 {% extends 'home_base/layout.html' %}
+{% load static %}
 
 {% block title %}
     تماس با ما
 {% endblock %}
 
 {% block content %}
-
+    <link rel="stylesheet" href="{% static 'form-style.css' %}">
     {% if messages %}
     {% for message in messages %}
-        <h3>{{ message }}</h3>
+    <ul>
+        <li {% if message.tags %}
+        class="{{ message.tags }}"{% endif %}></li>
     {% endfor %}
+    </ul>
     {% endif %}
-
     <form action="{% url 'contact-us' %}" method="post">
     {% csrf_token %}
-    {{ form }}
-    <button type="submit">ارسال</button>
+        {{ form.as_p }}
+    <button type="submit" style="">ارسال</button>
     </form>
 {% endblock %}
