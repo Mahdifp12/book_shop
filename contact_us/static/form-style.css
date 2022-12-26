@@ -1,17 +1,17 @@
 form {
     padding: 25px;
-    margin: 25px;
-    box-shadow: 0 2px 5px #383737;
-    background: #aaffcf;
+    margin: 50px;
+    box-shadow: 0 2px 5px #000000;
+    background: 30px #273f29;
     font-size: medium;
     border-radius: 4px;
 }
 
 
 input, textarea {
-width: calc(100% - 18px);
+width: calc(70% - 15px);
 padding: 8px;
-margin-bottom: 20px;
+    margin-bottom: 15px;
 border: 1px solid;
 border-radius: 4px;
 outline: none;
@@ -22,9 +22,10 @@ color: #666;
 }
 
 button {
-width: 100%;
+width: 50%;
 padding: 10px;
 border: none;
+border-radius: 5px;
 background: #1c87c9;
 font-size: 16px;
 font-weight: 400;
@@ -33,4 +34,8 @@ color: #fff;
 
 button:hover {
 background: #2371a0;
+}
+
+label {
+    color: #eeeeee;
 }
