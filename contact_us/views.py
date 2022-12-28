@@ -11,7 +11,7 @@ from .models import ContactUs
 
 def contact_us_page(request):
     if request.method == 'POST':
-        obj_form = ContactUsForm(request.POST)
+        obj_form = ContactUsForm(data=request.POST)
         if obj_form.is_valid():
             obj_contact = ContactUs(
                 full_name=obj_form.cleaned_data["full_name"],
