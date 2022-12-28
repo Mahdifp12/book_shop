@@ -6,18 +6,12 @@
 {% endblock %}
 
 {% block content %}
+
     <link rel="stylesheet" href="{% static 'form-style.css' %}">
-    {% if messages %}
-    {% for message in messages %}
-    <ul>
-        <li {% if message.tags %}
-        class="{{ message.tags }}"{% endif %}></li>
-    {% endfor %}
-    </ul>
-    {% endif %}
     <form action="{% url 'contact-us' %}" method="post">
     {% csrf_token %}
-        {{ form.as_p }}
+        {{ form }}
     <button type="submit" style="">ارسال</button>
     </form>
+
 {% endblock %}

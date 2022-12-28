@@ -1,7 +1,7 @@
-from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+
 from .form import ContactUsForm
 from .models import ContactUs
 
@@ -21,13 +21,9 @@ def contact_us_page(request):
             )
 
             obj_contact.save()
-
-            messages.success(request, "پیغام شما با موفقیت ارسال شد.")
             return HttpResponseRedirect(reverse('home-page'))
 
+    form = ContactUsForm()
     return render(request, "contact_us/contact_us.html", context={
-        "form": ContactUsForm()
+        "form": form
     })
-
-
-
