@@ -10,7 +10,31 @@
     <link rel="stylesheet" href="{% static 'form-style.css' %}">
     <form action="{% url 'contact-us' %}" method="post">
     {% csrf_token %}
-        {{ form }}
+
+    <div class="col-md-6 form-group {% if form.email.errors %} text-danger {% endif %}">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+
+    <div class="col-md-6 form-group {% if form.full_name.errors %} text-danger {% endif %}">
+        {{ form.full_name.label_tag }}
+        {{ form.full_name }}
+        {{ form.full_name.errors }}
+    </div>
+
+    <div class="col-md-12 form-group {% if form.title.errors %} text-danger {% endif %}">
+        {{ form.title.label_tag }}
+        {{ form.title }}
+        {{ form.title.errors }}
+    </div>
+
+
+    <div class="col-md-12 form-group {% if form.message.errors %} text-danger {% endif %}">
+        {{ form.message.label_tag }}
+        {{ form.message }}
+        {{ form.message.errors }}
+    </div>
     <button type="submit" style="">ارسال</button>
     </form>
 

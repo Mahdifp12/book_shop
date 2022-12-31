@@ -2,7 +2,7 @@ form {
     padding: 25px;
     margin: 50px;
     box-shadow: 0 2px 5px #000000;
-    background: 30px #273f29;
+    background: 30px oldlace;
     font-size: medium;
     border-radius: 4px;
 }
@@ -37,5 +37,5 @@ background: #2371a0;
 }
 
 label {
-    color: #eeeeee;
+    color: #0d5759;
 }
