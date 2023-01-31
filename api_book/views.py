@@ -43,7 +43,6 @@ class ListApiBooks(APIView):
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes([IsAuthenticated])
 def book_api_view_detail(request, id):
-
     try:
         book = Book.objects.get(pk=id)
     except Book.DoesNotExist:
