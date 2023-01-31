@@ -1,19 +1,19 @@
-from django.shortcuts import render, get_object_or_404
-
+from django.views.generic import ListView, DetailView
 from .models import Book
 
 
-def product_list(request):
-    list_of_product = Book.objects.all().order_by('-price')[:5]
-    return render(request, 'product/product_list.html', {
-        "products": list_of_product
-
-    }
-                  )
+class ProductListView(ListView):
+    template_name = "product/product_list.html"
+    model = Book
+    context_object_name = "products"
 
 
-def product_detail(request, slug):
-    book = get_object_or_404(Book, slug=slug)
-    return render(request, "product/product_detail.html", {
-        "book": book,
-    })
+class ProductDetailView(DetailView):
+    pass
+
+#
+# def product_detail(request, slug):
+#     book = get_object_or_404(Book, slug=slug)
+#     return render(request, "product/product_detail.html", {
+#         "book": book,
+#     })
