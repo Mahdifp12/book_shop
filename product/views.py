@@ -1,9 +1,7 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Book, BookCategory
-from django.db.models import Avg
 
+from .models import Book
 
-# Create your views here.
 
 def product_list(request):
     list_of_product = Book.objects.all().order_by('-price')[:5]
@@ -11,7 +9,7 @@ def product_list(request):
         "products": list_of_product
 
     }
-    )
+                  )
 
 
 def product_detail(request, slug):
