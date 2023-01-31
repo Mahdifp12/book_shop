@@ -2,21 +2,11 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 
-# Create your views here.
-
 class HomePageView(TemplateView):
     template_name = "home_module/index.html"
 
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
-
-
-# def home_page(request):
-#     return render(
-#         request,
-#         template_name="home_module/index.html",
-#         context={}
-#     )
 
 
 def site_header_component(request):
