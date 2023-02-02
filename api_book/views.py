@@ -14,30 +14,28 @@ class ListApiBooks(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        if request.method == "GET":
-            books = Book.objects.all().order_by('-id')
-            serializer = BookModelSerializer(books, many=True)
-            return Response(data=serializer.data, status=status.HTTP_200_OK)
+        books = Book.objects.all().order_by('-id')
+        serializer = BookModelSerializer(books, many=True)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request):
-        if request.method == "POST":
-            book = {
-                'title': request.data.get('title'),
-                'price': request.data.get('price'),
-                'short_description': request.data.get('short_description'),
-                'description': request.data.get('description'),
-                'is_active': request.data.get('is_active'),
-                'is_delete': request.data.get('is_delete')
-            }
+        book = {
+            'title': request.data.get('title'),
+            'price': request.data.get('price'),
+            'short_description': request.data.get('short_description'),
+            'description': request.data.get('description'),
+            'is_active': request.data.get('is_active'),
+            'is_delete': request.data.get('is_delete')
+        }
 
-            serializer = BookModelSerializer(data=book)
+        serializer = BookModelSerializer(data=book)
 
-            if serializer.is_valid():
-                serializer.save()
+        if serializer.is_valid():
+            serializer.save()
 
-                return Response(data=serializer.data, status=status.HTTP_201_CREATED)
+            return Response(data=serializer.data, status=status.HTTP_201_CREATED)
 
-            return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(data=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
