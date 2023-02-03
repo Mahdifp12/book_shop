@@ -1,0 +1,18 @@
+{% extends 'home_base/layout.html' %}
+{% load static %}
+
+{% block title %}
+    ثبت پروفایل
+{% endblock %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="{% static 'form-style.css' %}">
+    <form action="{% url 'create-profile-page' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.user_image.label }}
+    {{ form.user_image }}
+    <button type="submit" style="">ارسال</button>
+    </form>
+
+{% endblock %}
