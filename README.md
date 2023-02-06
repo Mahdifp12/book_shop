@@ -20,5 +20,5 @@ pip install Unidecode
 
 ## requirement file
 ```bash
-pip install -m requirements.txt
+pip install -r requirements.txt
 ```

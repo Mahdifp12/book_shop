@@ -36,4 +36,3 @@ class CreateProfileView(View):
         return render(request, template_name="contact_us/create_profile.html", context={
             "form": form_submit
         })
-
