@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="{% static 'form-style.css' %}">
     <form action="{% url 'create-profile-page' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.user_image.label }}
-    {{ form.user_image }}
+    {{ form.image.label }}
+    {{ form.image }}
     <button type="submit" style="">ارسال</button>
     </form>
 
