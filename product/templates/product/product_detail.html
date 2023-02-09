@@ -77,7 +77,14 @@
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->
-
+                    <form method="post" action="{% url 'book-favorite' %}">
+                     {% csrf_token %}
+                    <label>علاقه مندی</label>
+                    <input type="hidden" name="book_slug" value="{{ book.slug }}" class="search_box">
+                    <button type="submit" class="btn btn-fefault cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        <h3>کتاب مورد علاقه ام است</h3> </button>
+                    </form>
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
                             <p>توضیحات اصلی : {{ book.description }}</p>
