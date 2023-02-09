@@ -1,10 +1,7 @@
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
-from django.urls import reverse
 from django.views.generic import CreateView, ListView
 from django.views.generic.edit import FormView
-from django.views import View
-from .forms import ContactUsModelForm, ProfileForm
+
+from .forms import ContactUsModelForm
 from .models import UserProfile
 
 
