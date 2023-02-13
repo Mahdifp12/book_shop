@@ -18,7 +18,7 @@ class BookDetailView(DetailView):
         context = super(BookDetailView, self).get_context_data(**kwargs)
         self_product = self.object
         request = self.request
-        is_favorite = request.session.get("book_favorite") == self_product.id
+        is_favorite = request.session.get("book_favorite") == self_product.slug
         context["is_favorite"] = is_favorite
         return context
 
