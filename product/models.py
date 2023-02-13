@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-
+from unidecode import unidecode
 
 # Create your models here.
 
@@ -50,7 +50,7 @@ class Book(models.Model):
         return reverse('book-detail', args=[self.slug])
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = slugify(unidecode(self.title))
         super().save(*args, **kwargs)
 
     def __str__(self):

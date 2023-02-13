@@ -18,15 +18,15 @@ class BookDetailView(DetailView):
         context = super(BookDetailView, self).get_context_data(**kwargs)
         self_product = self.object
         request = self.request
-        is_favorite = request.session.get("book_favorite") == self_product.slug
+        is_favorite = request.session.get("book_favorite") == self_product.id
         context["is_favorite"] = is_favorite
         return context
 
 
 class BookFavorite(View):
     def post(self, request):
-        book_slug = request.POST['book_slug']
-        book = Book.objects.get(slug=book_slug)
-        request.session['book_favorite'] = book.slug
+        book_id = request.POST['book_id']
+        book = Book.objects.get(pk=book_id)
+        request.session['book_favorite'] = book.id
 
         return redirect(book.get_absolute_url())

@@ -2,7 +2,12 @@
 <div class="product-image-wrapper">
     <div class="single-products">
         <div class="productinfo text-center">
-            <a href={% url 'book-detail' slug=product.slug %}><img src="/static/image/shop/product.jpg" alt=""></a>
+            <a href={% url 'book-detail' slug=product.slug %}></a>
+            {% if product.image %}
+                <img src={{ product.image.url }} alt="" width="268">
+            {% else %}
+                <img src="/static/image/shop/product.jpg" alt="">
+            {% endif %}
             <h2>تومان{{ product.price }}</h2>
             <a style="text-decoration: none" href={% url 'book-detail' slug=product.slug %}><p>{{ product.title }}</p></a>
 
