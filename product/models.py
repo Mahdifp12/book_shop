@@ -25,6 +25,8 @@ class BookCategory(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=300, verbose_name="عنوان")
 
+    image = models.ImageField(upload_to="images/books", verbose_name="عکس کتاب", null=True, blank=True)
+
     category = models.ManyToManyField(
         BookCategory,
         related_name="book_categories",
