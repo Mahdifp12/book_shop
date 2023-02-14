@@ -92,9 +92,18 @@
                      {% csrf_token %}
                     <label>علاقه مندی</label>
                     <input type="hidden" name="book_id" value="{{ book.id }}" class="search_box">
-                    <button type="submit" class="btn btn-fefault cart">
-                        <i class="fa fa-shopping-cart"></i>
-                        <h3>کتاب مورد علاقه ام است</h3> </button>
+                    <button type="submit" class="btn btn-default cart">
+                    <i class="fa fa-shopping-cart"></i>
+                    {% if is_favorite %}
+                        <h4>
+                            کتاب مورد علاقه ام
+                        </h4>
+                    {% else %}
+                        <h4>
+                            افزودن به علاقه مندی ها
+                        </h4>
+                    {% endif %}
+                    </button>
                     </form>
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
@@ -115,7 +124,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -127,7 +136,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -139,7 +148,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -151,7 +160,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -166,7 +175,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -178,7 +187,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -190,7 +199,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -202,7 +211,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -217,7 +226,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -229,7 +238,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -241,7 +250,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -253,7 +262,7 @@
 												<img src="/static/image/home/Gallery.jpg" alt="">
 												<h2>1.250.000 ريال</h2>
 												<p>توضیحات کوتاه محصول</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+												<
 											</div>
 										</div>
 									</div>
@@ -300,7 +309,7 @@
 													<img src="/static/image/home/product.jpg" alt="">
 													<h2>1.250.000 ريال</h2>
 													<p>توضیحات کوتاه محصول</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+													<
 												</div>
 											</div>
 										</div>
@@ -312,7 +321,7 @@
 													<img src="/static/image/home/recommend2.jpg" alt="">
 													<h2>1.250.000 ريال</h2>
 													<p>توضیحات کوتاه محصول</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+													<
 												</div>
 											</div>
 										</div>
@@ -324,7 +333,7 @@
 													<img src="/static/image/home/product.jpg" alt="">
 													<h2>1.250.000 ريال</h2>
 													<p>توضیحات کوتاه محصول</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+													<
 												</div>
 											</div>
 										</div>
@@ -338,7 +347,7 @@
 													<img src="/static/image/home/product.jpg" alt="">
 													<h2>1.250.000 ريال</h2>
 													<p>توضیحات کوتاه محصول</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+													<
 												</div>
 											</div>
 										</div>
@@ -350,7 +359,7 @@
 													<img src="/static/image/home/product.jpg" alt="">
 													<h2>1.250.000 ريال</h2>
 													<p>توضیحات کوتاه محصول</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
+													<
 												</div>
 											</div>
 										</div>
@@ -362,7 +371,6 @@
 													<img src="/static/image/home/product.jpg" alt="">
 													<h2>1.250.000 ريال</h2>
 													<p>توضیحات کوتاه محصول</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>افزودن به سبـد خریـد</button>
 												</div>
 											</div>
 										</div>
