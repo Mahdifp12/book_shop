@@ -16,10 +16,15 @@
                             {% include 'includes/product_item_partial.html' with product=product%}
                         {% endfor %}
 						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">»</a></li>
+                            {% if page_obj.has_previous %}
+                                <a href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                            {% endif %}
+                            {% for page in paginator %}
+                                <li class=""><a href="?page={{ page.number }}">{{ page.number }}</a></li>
+                            {% endfor %}
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                            {% endif %}
 						</ul>
 					</div><!--features_items-->
 				</div>

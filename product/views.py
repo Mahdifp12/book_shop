@@ -9,6 +9,7 @@ class BookListView(ListView):
     model = Book
     context_object_name = "products"
     ordering = ['-price']
+    paginate_by = 2
 
 
 class BookDetailView(DetailView):
