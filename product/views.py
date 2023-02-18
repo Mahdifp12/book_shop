@@ -8,6 +8,7 @@ class BookListView(ListView):
     template_name = "product/product_list.html"
     model = Book
     context_object_name = "products"
+    ordering = ['-price']
 
 
 class BookDetailView(DetailView):
