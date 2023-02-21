@@ -14,4 +14,13 @@ class RegisterView(View):
         return render(request, 'book_account/register.html', context)
 
     def post(self, request):
-        pass
+        register_form = RegisterForm(request.POST or None)
+
+        if register_form.is_valid():
+            print(register_form.cleaned_data)
+
+        context = {
+            "form": register_form
+        }
+
+        return render(request, 'book_account/register.html', context)

@@ -10,7 +10,8 @@
 			<div class="row">
 					<div class="signup-form"><!--sign up form-->
 						<h2>ثبت نام کاربـر جدیـد</h2>
-						<form>
+						<form method="post", action="{% url 'register-page' %}">
+                            {% csrf_token %}
                             {{ form.email.label_tag }}
                             {{ form.email }}
                             {{ form.email.errors }}
