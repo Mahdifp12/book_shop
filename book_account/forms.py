@@ -1,6 +1,6 @@
 from django import forms
 from django.core import validators
-from rest_framework.exceptions import ValidationError
+from django.core.exceptions import ValidationError
 
 
 class RegisterForm(forms.Form):
