@@ -20,6 +20,7 @@ from django.conf import settings
 
 urlpatterns = [
     path("", include("home_module.urls")),
+    path("account/", include("book_account.urls")),
     path("products/", include("product.urls")),
     path("contact-us/", include("contact_us.urls")),
     path("api/", include("api_book.urls")),
