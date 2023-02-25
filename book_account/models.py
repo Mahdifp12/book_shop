@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
-    mobile = models.CharField(max_length=20, verbose_name="شماره موبایل")
+    avatar = models.CharField(max_length=20, verbose_name="تصویر آواتار", null=True, blank=True)
     email_active_code = models.CharField(max_length=100, verbose_name="کد فعالسازی ایمیل")
 
     class Meta:
