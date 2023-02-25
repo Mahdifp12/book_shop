@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.views import View
 from .forms import RegisterForm
 from .models import User
 from django.utils.crypto import get_random_string
+
 
 class RegisterView(View):
     def get(self, request):
@@ -35,9 +37,25 @@ class RegisterView(View):
                 )
                 new_user.set_password(user_password)
                 new_user.save()
+                # todo: send email active code
 
+                return redirect(reverse("login-page"))
         context = {
             "form": register_form
         }
 
         return render(request, 'book_account/register.html', context)
+
+
+class LoginView(View):
+    def get(self, request):
+        login_form = None
+
+        context = {
+            "form": None
+        }
+
+        return render(request, 'book_account/register.html', context)
+
+    def post(self, request):
+        pass
