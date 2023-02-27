@@ -22,3 +22,7 @@ pip install Unidecode
 ```bash
 pip install -r requirements.txt
 ```
+
+## License
+
+[Apache license](https://www.apache.org/licenses/)
