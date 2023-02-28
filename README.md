@@ -35,6 +35,6 @@ Reloader page :
 
 Most of the points of the project are shown in the video below:
 
-<video>
+<video controls width="500">
     <source src="static/videos/readme_video/out_put_project(updating).mp4" type="video/mp4">
 </video>
