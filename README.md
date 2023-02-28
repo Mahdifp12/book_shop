@@ -32,3 +32,9 @@ pip install -r requirements.txt
 Reloader page :
 
 <img src="/static/image/loader-img.gif" alt="Alt text" title="Home Page">
+
+Most of the points of the project are shown in the video below:
+
+<video>
+    <source src="static/videos/readme_video/out_put_project(updating).mp4" type="video/mp4">
+</video>
