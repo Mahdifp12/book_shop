@@ -26,3 +26,9 @@ pip install -r requirements.txt
 ## License
 
 [Apache license](https://www.apache.org/licenses/)
+
+## Images :
+
+Reloader page :
+
+<img src="/static/image/loader-img.gif" alt="Alt text" title="Home Page">
