@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 from .models import User
 from django.utils.crypto import get_random_string
 
@@ -51,13 +51,13 @@ class RegisterView(View):
 
 class LoginView(View):
     def get(self, request):
-        login_form = None
+        login_form = LoginForm()
 
         context = {
-            "form": None
+            "form": login_form
         }
 
-        return render(request, 'book_account/register.html', context)
+        return render(request, 'book_account/login.html', context)
 
     def post(self, request):
         pass
@@ -67,12 +67,17 @@ class ActivateAccount(View):
     def get(self, request, email_active_code):
         user: User = User.objects.filter(email_active_code__iexact=email_active_code).first()
 
-        if user is not None and user.is_active is False:
-            user.is_active = True
-            user.email_active_code = get_random_string(length=72)
-            user.save()
+        if user is not None:
+            if not user.is_active:
+                user.is_active = True
+                user.email_active_code = get_random_string(length=72)
+                user.save()
 
-            return redirect(reverse("login-page"))
+                return redirect(reverse("login-page"))
+
+            else:
+                # Todo : This is here your was activated account message
+                pass
 
         raise Http404()
 
