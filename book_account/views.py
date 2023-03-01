@@ -40,6 +40,7 @@ class RegisterView(View):
                 # todo: send email active code
 
                 return redirect(reverse("login-page"))
+
         context = {
             "form": register_form
         }
