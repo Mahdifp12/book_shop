@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
@@ -57,6 +58,23 @@ class LoginView(View):
         }
 
         return render(request, 'book_account/register.html', context)
+
+    def post(self, request):
+        pass
+
+
+class ActivateAccount(View):
+    def get(self, request, email_active_code):
+        user: User = User.objects.filter(email_active_code__iexact=email_active_code).first()
+
+        if user is not None and user.is_active is False:
+            user.is_active = True
+            user.email_active_code = get_random_string(length=72)
+            user.save()
+
+            return redirect(reverse("login-page"))
+
+        raise Http404()
 
     def post(self, request):
         pass
