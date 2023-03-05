@@ -1,10 +1,11 @@
-from django.http import Http404
+from django.http import Http404, HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from .forms import RegisterForm, LoginForm
 from .models import User
 from django.utils.crypto import get_random_string
+from django.contrib.auth import login, logout
 
 
 class RegisterView(View):
@@ -59,9 +60,31 @@ class LoginView(View):
 
         return render(request, 'book_account/login.html', context)
 
-    def post(self, request):
-        pass
+    def post(self, request: HttpRequest):
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            user_email = login_form.cleaned_data.get("email")
+            user_password = login_form.cleaned_data.get("password")
+            user: User = User.objects.filter(email__iexact=user_email).first()
+            if user is not None:
+                if not user.is_active:
+                    login_form.add_error(field="email", error="حساب کاربری شما فعال نشده است")
 
+                else:
+                    is_correct_password = user.check_password(user_password)
+                    if is_correct_password:
+                        login(request, user)
+                        return redirect(reverse("home-page"))
+                    else:
+                        login_form.add_error(field="email", error="حساب کاربری شما یافت نشد")
+            else:
+                login_form.add_error(field="email", error="حساب کاربری شما یافت نشد")
+
+        context = {
+            "form": login_form
+        }
+
+        return render(request, "book_account/login.html", context)
 
 class ActivateAccount(View):
     def get(self, request, email_active_code):
