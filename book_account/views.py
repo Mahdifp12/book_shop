@@ -86,6 +86,7 @@ class LoginView(View):
 
         return render(request, "book_account/login.html", context)
 
+
 class ActivateAccount(View):
     def get(self, request, email_active_code):
         user: User = User.objects.filter(email_active_code__iexact=email_active_code).first()
