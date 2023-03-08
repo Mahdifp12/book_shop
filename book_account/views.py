@@ -2,7 +2,7 @@ from django.http import Http404, HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
-from .forms import RegisterForm, LoginForm, ForgetPasswordForm
+from .forms import RegisterForm, LoginForm, ForgetPasswordForm, ResetPasswordForm
 from .models import User
 from django.utils.crypto import get_random_string
 from django.contrib.auth import login, logout
@@ -133,3 +133,20 @@ class ForgetPassword(View):
         }
 
         return render(request, "book_account/forget_password.html", context)
+
+
+class ResetPassword(View):
+    def get(self, request: HttpRequest, active_code):
+
+        user: User = User.objects.filter(email_active_code__iexact=active_code).first()
+
+        if user is None:
+            return redirect(reverse("login-page"))
+
+        reset_password_form = ResetPasswordForm()
+
+        context = {
+            "form": reset_password_form
+        }
+
+        return render(request, "book_account/reset_password.html", context)

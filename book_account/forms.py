@@ -65,3 +65,21 @@ class ForgetPasswordForm(forms.Form):
             validators.EmailValidator
         ],
     )
+
+
+class ResetPasswordForm(forms.Form):
+    password = forms.CharField(
+        label="رمز عبور",
+        widget=forms.PasswordInput(),
+        validators=[
+            validators.MaxLengthValidator(100),
+        ],
+
+    )
+    confirm_password = forms.CharField(
+        label="تکرار رمز عبور",
+        widget=forms.PasswordInput(),
+        validators=[
+            validators.MaxLengthValidator(100),
+        ],
+    )
