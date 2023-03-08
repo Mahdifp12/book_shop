@@ -137,7 +137,6 @@ class ForgetPassword(View):
 
 class ResetPassword(View):
     def get(self, request: HttpRequest, active_code):
-
         user: User = User.objects.filter(email_active_code__iexact=active_code).first()
 
         if user is None:
