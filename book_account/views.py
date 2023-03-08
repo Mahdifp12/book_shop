@@ -117,3 +117,19 @@ class ForgetPassword(View):
             "form": forget_password_form
         }
         return render(request, 'book_account/forget_password.html', context)
+
+    def post(self, request: HttpRequest):
+        forget_password_form = ForgetPasswordForm(request.POST)
+        if forget_password_form.is_valid():
+            user_email = forget_password_form.cleaned_data.get("email")
+            user: User = User.objects.filter(email__iexact=user_email).first()
+
+            if user is not None:
+                # Todo : i'm must add send email system for reset password user
+                pass
+
+        context = {
+            "form": forget_password_form
+        }
+
+        return render(request, "book_account/forget_password.html", context)
