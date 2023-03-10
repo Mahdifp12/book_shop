@@ -1,12 +1,17 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
+from product.models import Book
 
 
 class HomePageView(TemplateView):
     template_name = "home_module/index.html"
 
     def get_context_data(self, **kwargs):
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        books: Book = Book.objects.all()[:4]
+        context["books"] = books
+
+        return context
 
 
 def site_header_component(request):

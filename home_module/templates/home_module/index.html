@@ -19,12 +19,10 @@
 
         <div class="swiper books-slider">
             <div class="swiper-wrapper">
-                <a href="#" class="swiper-slide"><img src="/static/image/book-1.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="/static/image/book-2.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="/static/image/book-3.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="/static/image/book-4.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="/static/image/book-5.png" alt=""></a>
-                <a href="#" class="swiper-slide"><img src="/static/image/book-6.png" alt=""></a>
+                {% for book in  books %}
+                    <a href="{% url "book-detail" slug=book.slug %}" class="swiper-slide"><img src="{{ book.image.url }}" alt="" style="border-radius: 8px; border: 15px; padding: 5px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); margin-left: auto; margin-right: auto; height: 200px; width: border-box;"></a>
+                {% endfor %}
+
             </div>
             <img src="/static/image/stand.png" class="stand" alt="">
         </div>
