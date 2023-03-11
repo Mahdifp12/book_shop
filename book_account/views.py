@@ -145,7 +145,8 @@ class ResetPassword(View):
         reset_password_form = ResetPasswordForm()
 
         context = {
-            "form": reset_password_form
+            "form": reset_password_form,
+            "active_code": active_code
         }
 
         return render(request, "book_account/reset_password.html", context)
