@@ -125,6 +125,7 @@ class ForgetPassword(View):
             user: User = User.objects.filter(email__iexact=user_email).first()
 
             if user is not None:
+                send_email("فعالسازی حساب کاربری", user.email, {"user": user}, "emails/active_account.html")
                 # Todo : i'm must add send email system for reset password user
                 pass
 
