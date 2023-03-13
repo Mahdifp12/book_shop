@@ -144,8 +144,8 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST = "smtp.gmail.com"
 
-EMAIL_HOST_USER = ""
+EMAIL_HOST_USER = ""  # Todo : Enter your Email
 
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST_PASSWORD = ""  # Todo : Enter your Password Email
 
 EMAIL_PORT = 587
