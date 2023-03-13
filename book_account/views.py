@@ -6,7 +6,7 @@ from .forms import RegisterForm, LoginForm, ForgetPasswordForm, ResetPasswordFor
 from .models import User
 from django.utils.crypto import get_random_string
 from django.contrib.auth import login, logout
-
+from utils.email_service import send_email
 
 class RegisterView(View):
     def get(self, request):
@@ -40,7 +40,7 @@ class RegisterView(View):
                 new_user.set_password(user_password)
                 new_user.save()
                 # todo: send email active code
-
+                send_email("فعالسازی حساب کاربری", new_user.email, {"user": new_user}, "emails/active_account.html")
                 return redirect(reverse("login-page"))
 
         context = {
