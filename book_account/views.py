@@ -41,7 +41,7 @@ class RegisterView(View):
                 new_user.set_password(user_password)
                 new_user.save()
                 # todo: send email active code
-                send_email("فعالسازی حساب کاربری", new_user.email, {"user": new_user}, "emails/active_account.html")
+                send_email("فعالسازی حساب کاربری", new_user.email, {"user": new_user}, "emails/activate_account.html")
                 return redirect(reverse("login-page"))
 
         context = {
