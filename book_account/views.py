@@ -8,6 +8,7 @@ from django.utils.crypto import get_random_string
 from django.contrib.auth import login, logout
 from utils.email_service import send_email
 
+
 class RegisterView(View):
     def get(self, request):
         register_form = RegisterForm()
@@ -174,3 +175,9 @@ class ResetPassword(View):
         }
 
         return render(request, "book_account/reset_password.html", context)
+
+
+class LogoutView(View):
+    def get(self, request: HttpRequest):
+        logout(request)
+        return redirect(reverse("login-page"))
