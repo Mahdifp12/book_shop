@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "contact_us",
     "api_book",
     "book_account",
+    "site_settings",
     # external apps
     "django_render_partial",
     "rest_framework",
