@@ -46,13 +46,13 @@
             <a href="{% url 'book-list' %}">کتابخانه</a>
             <a href="{% url 'contact-us' %}">تماس با ما</a>
             {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                    <a href="/admin">پنل ادمین</a>
+                {% endif %}
                 <a href="#">پنل کاربری</a>
                 <a href="{% url 'create-profile-page' %}">پروفایل</a>
                 <a href="#">سبد خرید</a>
                 <a href="{% url 'logout-page' %}">خروج</a>
-                {% if request.user.is_superuser %}
-                    <a href="/admin">پنل ادمین</a>
-                {% endif %}
 
             {% else %}
                 <a href="{% url 'register-page' %}">ثبت نام</a>
