@@ -1,42 +1,14 @@
 <section class="footer">
 
     <div class="box-container">
-
-        <div class="box">
-            <h3>دیگر شعبه ها</h3>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> تهران </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> مشهد </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> اصفهان </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> شیراز </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> تبریز </a>
-            <a href="#"> <i class="fas fa-map-marker-alt"></i> یزد </a>
+        {% for footer_link_box in footer_link_boxes %}
+            <div class="box">
+            <h3>{{ footer_link_box.title }}</h3>
+            {% for link in footer_link_box.footerlinks_set.all %}
+                        <a href="{{ link.url }}"> <i class="fas fa-map-marker-alt"></i> {{ link.title }} </a>
+            {% endfor %}
         </div>
-
-        <div class="box">
-            <h3>quick links</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> خانه </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> ویژه </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> برجسته </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> نظرات </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> وبلاگ </a>
-        </div>
-
-        <div class="box">
-            <h3>extra links</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> حساب کاربری </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> اقلام سفارش داده شده </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> قوانین </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> روش پرداخت </a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> دیگر سرویس ها </a>
-        </div>
-
-        <div class="box">
-            <h3>contact info</h3>
-            <a href="#"> <i class="fas fa-phone"></i> {{ settings.phone }} </a>
-            <a href="#"> <i class="fas fa-phone"></i> {{ settings.fax }} </a>
-            <a href="#"> <i class="fas fa-envelope"></i> {{ settings.email }} </a>
-            <img src="/static/image/worldmap.png" class="map" alt="">
-        </div>
+        {% endfor %}
 
     </div>
 
