@@ -21,3 +21,27 @@ class SiteSettings(models.Model):
 
     def __str__(self):
         return self.site_name
+
+
+class FooterLinkBox(models.Model):
+    title = models.CharField(max_length=250, verbose_name="عنوان")
+
+    class Meta:
+        verbose_name = "دسته بندی لینک های فوتر"
+        verbose_name_plural = "دسته بندی های لینک های فوتر"
+
+    def __str__(self):
+        return self.title
+
+
+class FooterLinks(models.Model):
+    title = models.CharField(max_length=250, verbose_name="عنوان")
+    url = models.URLField(max_length=600, verbose_name="لینک")
+    footer_link_box = models.ForeignKey(to=FooterLinkBox, verbose_name="دسته بندی", on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = "لینک فوتر"
+        verbose_name_plural = "لینک های فوتر"
+
+    def __str__(self):
+        return self.title
