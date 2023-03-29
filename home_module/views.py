@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from product.models import Book
+from site_settings.models import SiteSettings
 
 
 class HomePageView(TemplateView):
@@ -15,18 +16,30 @@ class HomePageView(TemplateView):
 
 
 def site_header_component(request):
+    settings: SiteSettings = SiteSettings.objects.filter(is_main_setting=True).first()
+
+    context = {
+        "settings": settings
+    }
+
     return render(
         request,
         template_name="home_base/site_header_component.html",
-        context={}
+        context=context
     )
 
 
 def site_footer_component(request):
+    settings: SiteSettings = SiteSettings.objects.filter(is_main_setting=True).first()
+
+    context = {
+        "settings": settings
+    }
+
     return render(
         request,
         template_name="home_base/site_footer_component.html",
-        context={}
+        context=context
     )
 
 
