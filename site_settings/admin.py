@@ -14,3 +14,4 @@ class FooterLinksAdmin(admin.ModelAdmin):
 admin.site.register(models.SiteSettings)
 admin.site.register(models.FooterLinkBox)
 admin.site.register(models.FooterLinks)
+admin.site.register(models.Slider)
