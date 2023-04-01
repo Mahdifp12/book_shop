@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from product.models import Book
-from site_settings.models import SiteSettings, FooterLinks, FooterLinkBox
+from site_settings.models import SiteSettings, FooterLinks, FooterLinkBox, Slider
 
 
 class HomePageView(TemplateView):
@@ -10,6 +10,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         books: Book = Book.objects.all()[:4]
+        context["slider"]: Slider = Slider.objects.filter(is_active=True)
         context["books"] = books
 
         return context
