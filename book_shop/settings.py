@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "api_book",
     "book_account",
     "site_settings",
+    "article_module",
     # external apps
     "django_render_partial",
     "rest_framework",
