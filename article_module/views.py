@@ -8,4 +8,4 @@ from .models import Article
 class ArticlesView(ListView):
     model = Article
     paginate_by = 4
-    template_name = ""
+    template_name = "article_module/article_page.html"
