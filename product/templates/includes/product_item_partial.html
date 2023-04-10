@@ -1,10 +1,14 @@
+{% load thumbnail %}
+
 <div class="col-sm-4">
 <div class="product-image-wrapper">
     <div class="single-products">
         <div class="productinfo text-center">
             <a href={% url 'book-detail' slug=product.slug %}></a>
             {% if product.image %}
-                <img src={{ product.image.url }} alt="" width="268">
+                {% thumbnail product.image "268x250" crop="center" quality=65 as image %}
+                    <img src={{ image.url }}>
+                {% endthumbnail %}
             {% else %}
                 <img src="/static/image/shop/product.jpg" alt="">
             {% endif %}
