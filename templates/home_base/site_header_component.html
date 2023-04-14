@@ -45,6 +45,7 @@
             <a href="{% url 'home-page' %}">خانه</a>
             <a href="{% url 'book-list' %}">کتابخانه</a>
             <a href="{% url 'contact-us' %}">تماس با ما</a>
+            <a href="{% url 'articles-page' %}">مقالات</a>
             {% if request.user.is_authenticated %}
                 {% if request.user.is_superuser %}
                     <a href="/admin">پنل ادمین</a>
