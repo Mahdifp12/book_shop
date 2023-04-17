@@ -13,7 +13,6 @@
                     <div class="col-sm-9">
                         <div class="blog-post-area">
                             <h2 class="title text-center">آخریـن اخبـار</h2>
-
                             {% for article in article_list %}
                                 <div class="single-blog-post">
                                 <h3>{{ article.title }}</h3>
@@ -24,8 +23,8 @@
                                         {% else %}
                                             <li><i class="fa fa-user"></i>بی نام</li>
                                         {% endif %}
-                                        <li><i class="fa fa-clock-o"></i> 17:20 ب.ظ</li>
-                                        <li><i class="fa fa-calendar"></i> 28 تیـر 1397</li>
+                                        <li><i class="fa fa-clock-o"></i>{{ article.get_jalali_time }}</li>
+                                        <li><i class="fa fa-calendar"></i>{{ article.get_jalali_date }}</li>
                                     </ul>
                                     <span>
 										<i class="fa fa-star"></i>
