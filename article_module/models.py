@@ -1,4 +1,5 @@
 from django.db import models
+from jalali_date import datetime2jalali, date2jalali
 
 from book_account.models import User
 
@@ -33,10 +34,17 @@ class Article(models.Model):
     is_active = models.BooleanField(default=True, verbose_name="فعال / غیر فعال")
     selected_categories = models.ManyToManyField(ArticleCategory, verbose_name="دسته بندی ها")
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="نویسنده", null=True, editable=False)
+    create_date = models.DateTimeField(auto_now_add=True, editable=False, verbose_name="تاریخ ثبت")
 
     class Meta:
         verbose_name = "مقاله"
         verbose_name_plural = "مقالات"
+
+    def get_jalali_time(self):
+        return datetime2jalali(self.create_date).strftime("%H:%M")
+
+    def get_jalali_date(self):
+        return date2jalali(self.create_date)
 
     def __str__(self):
         return self.title
