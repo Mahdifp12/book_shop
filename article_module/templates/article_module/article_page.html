@@ -1,4 +1,5 @@
 {% extends 'home_base/layout.html' %}
+{% load poll_extras %}
 {% load thumbnail %}
 
 {% block title %}
@@ -24,7 +25,7 @@
                                             <li><i class="fa fa-user"></i>بی نام</li>
                                         {% endif %}
                                         <li><i class="fa fa-clock-o"></i>{{ article.get_jalali_time }}</li>
-                                        <li><i class="fa fa-calendar"></i>{{ article.get_jalali_date }}</li>
+                                        <li><i class="fa fa-calendar"></i>{{ article.create_date | d_jalali }}</li>
                                     </ul>
                                     <span>
 										<i class="fa fa-star"></i>
