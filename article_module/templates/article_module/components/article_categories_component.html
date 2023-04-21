@@ -1,0 +1,33 @@
+<h2>دسته بندی مقالات</h2>
+<div class="panel-group category-products" id="accordian"><!--category-productsr-->
+    {% for article_main_category in article_main_categories %}
+            <div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            {% if article_main_category.articlecategory_set.all %}
+                <a data-toggle="collapse" data-parent="#accordian" href="#{{ article_main_category.url_title }}">
+                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                    {{ article_main_category.title }}
+                </a>
+            {% else %}
+                <a href="#{{ article_main_category.url_title }}">
+                    {{ article_main_category.title }}
+                </a>
+            {% endif %}
+        </h4>
+    </div>
+    {% if article_main_category.articlecategory_set %}
+    <div id="{{ article_main_category.url_title }}" class="panel-collapse collapse">
+        <div class="panel-body">
+                 <ul>
+                     {% for sub_category in article_main_category.articlecategory_set.all %}
+                         <li><a href="">{{ sub_category.title }}</a></li>
+                     {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+    {% endfor %}
+
+</div><!--/category-productsr-->
