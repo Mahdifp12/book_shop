@@ -13,5 +13,4 @@ class ArticlesView(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(ArticlesView, self).get_context_data(*args, **kwargs)
-        context['date'] = date2jalali(self.request.user.date_joined)
         return context
