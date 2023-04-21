@@ -10,7 +10,7 @@
                     {{ article_main_category.title }}
                 </a>
             {% else %}
-                <a href="#{{ article_main_category.url_title }}">
+                <a href="{% url 'articles-by-categories-page' category=article_main_category.url_title %}">
                     {{ article_main_category.title }}
                 </a>
             {% endif %}
@@ -21,7 +21,7 @@
         <div class="panel-body">
                  <ul>
                      {% for sub_category in article_main_category.articlecategory_set.all %}
-                         <li><a href="">{{ sub_category.title }}</a></li>
+                         <li><a href="{% url 'articles-by-categories-page' category=sub_category.url_title %}">{{ sub_category.title }}</a></li>
                      {% endfor %}
                 </ul>
             </div>
