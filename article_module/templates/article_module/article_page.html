@@ -1,6 +1,7 @@
 {% extends 'home_base/layout.html' %}
 {% load poll_extras %}
 {% load thumbnail %}
+{% load render_partial %}
 
 {% block title %}
     مقالات
@@ -59,6 +60,7 @@
 				<div class="col-sm-3">
 					<div class="left-sidebar">
 
+                        {% render_partial 'article_module.views.article_categories_components' %}
 
 						<div class="shipping text-center"><!--shipping-->
 							<img src="/static/image/home/shipping.jpg" alt="">
