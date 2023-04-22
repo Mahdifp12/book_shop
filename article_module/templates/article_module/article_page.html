@@ -43,7 +43,7 @@
                                 <p>
                                     {{ article.short_description }}
                                 </p>
-                                <a class="btn btn-primary" href="">ادامـه مطلب</a>
+                                <a class="btn btn-primary" href="{% url 'article_detail_page' pk=article.pk %}">ادامـه مطلب</a>
                             </div>
                             {% endfor %}
 
