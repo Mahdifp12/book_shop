@@ -1,7 +1,7 @@
 from django.http import HttpRequest
 from django.shortcuts import render
 from django.views.generic import ListView
-from jalali_date import datetime2jalali, date2jalali
+
 from .models import Article, ArticleCategory
 
 
