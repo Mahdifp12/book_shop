@@ -1,26 +1,38 @@
 from django.http import HttpRequest
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Article, ArticleCategory
 
 
 # Create your views here.
 
-class ArticlesView(ListView):
+class ArticleListView(ListView):
     model = Article
     paginate_by = 4
     template_name = "article_module/article_page.html"
 
     def get_context_data(self, *args, **kwargs):
-        context = super(ArticlesView, self).get_context_data(*args, **kwargs)
+        context = super(ArticleListView, self).get_context_data(*args, **kwargs)
         return context
 
     def get_queryset(self):
-        query = super(ArticlesView, self).get_queryset()
+        query = super(ArticleListView, self).get_queryset()
+        query = query.filter(is_active=True)
         category_name = self.kwargs.get("category")
         if category_name is not None:
             query = query.filter(selected_categories__url_title__iexact=category_name)
+        return query
+
+
+class ArticleDetailView(DetailView):
+    model = Article
+    template_name = "article_module/article_detail_page.html"
+
+    def get_queryset(self):
+        query = super(ArticleDetailView, self).get_queryset()
+        query = query.filter(is_active=True)
+
         return query
 
 
