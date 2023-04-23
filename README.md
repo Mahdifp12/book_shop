@@ -14,6 +14,9 @@ pip install Django
 pip install django-render-partial
 pip install djangorestframework
 pip install Unidecode
+pip install Pillow
+pip install sorl-thumbnail
+pip install jdatetime
 ```
 
 ## or
