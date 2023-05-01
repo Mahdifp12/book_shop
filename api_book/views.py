@@ -1,4 +1,4 @@
-from rest_framework import status
+from rest_framework import status, permissions
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
@@ -11,7 +11,7 @@ from .serializer import BookModelSerializer
 # Create your views here.
 
 class ListApiBooks(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = [permissions.IsAdminUser]
 
     def get(self, request):
         books = Book.objects.all().order_by('-id')
@@ -39,7 +39,7 @@ class ListApiBooks(APIView):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-@permission_classes([IsAuthenticated])
+@permission_classes([permissions.IsAdminUser])
 def book_api_view_detail(request, id):
     try:
         book = Book.objects.get(pk=id)
