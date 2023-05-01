@@ -45,6 +45,17 @@ class ArticleCommentAdmin(admin.ModelAdmin):
         'parent',
     ]
 
+    list_editable = [
+        'parent',
+    ]
+
+    list_filter = [
+        'create_date',
+        'article',
+        'parent',
+        'user',
+    ]
+
 
 admin.site.register(models.ArticleCategory, ArticleCategoryAdmin)
 admin.site.register(models.Article, ArticleAdmin)
