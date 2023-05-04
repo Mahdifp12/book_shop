@@ -125,38 +125,26 @@
 						</ul>
 					</div><!--/Response-area-->
 					<div class="replay-box">
-						<div class="row">
+						{% if request.user.is_authenticated %}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h2>نظـر خود را بنویسیـد</h2>
+                                    <div class="text-area">
+                                        <div class="blank-arrow">
+                                            <label>متن پیام</label>
+                                        </div>
+                                        <span>*</span>
+                                        <textarea name="message" rows="11" id="comment-text-article"></textarea>
+                                        <a class="btn btn-primary" onclick="sendArticleComment()">ارسـال نظـر</a>
 
-							<div class="col-sm-8">
-								<div class="text-area">
-									<div class="blank-arrow">
-										<label>متن پیام</label>
-									</div>
-									<span>*</span>
-									<textarea name="message" rows="11"></textarea>
-									<a class="btn btn-primary" href="">ارسـال نظـر</a>
-								</div>
-							</div>
-							<div class="col-sm-4">
-								<h2>نظـر خود را بنویسیـد</h2>
-								<form>
-									<div class="blank-arrow">
-										<label>نام</label>
-									</div>
-									<span>*</span>
-									<input type="text" placeholder="نام شما ...">
-									<div class="blank-arrow">
-										<label>آدرس ایمیـل</label>
-									</div>
-									<span>*</span>
-									<input type="email" placeholder="ایمیـل شما ...">
-									<div class="blank-arrow">
-										<label>وبسایت</label>
-									</div>
-									<input type="email" placeholder="آدرس وبسایـت">
-								</form>
-							</div>
-						</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-warning">
+                                <h5>برای ثبت نظر باید در سایت <a href="{% url 'login-page' %}">ورود</a> کنید</h5>
+                            </div>
+						{% endif %}
 					</div><!--/Repaly Box-->
 				</div>
 
