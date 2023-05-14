@@ -8,7 +8,15 @@ function sendArticleComment(articleId) {
         article_id : articleId,
         parent_id : parentId
     }).then(res => {
-        console.log(res);
+        $('#comments_area').html(res);
+        $('#comment-text-article').val('');
+        $('#parent_id').val('');
+        document.getElementById('comments_area').scrollIntoView({behavior: "smooth"});
+        if (parentId !== null && parentId !== ''){
+            document.getElementById('singel_comment_box_' + parentId).scrollIntoView({behavior: "smooth"});
+        }else{
+            document.getElementById('comments_area').scrollIntoView({behavior: "smooth"});
+        }
     });
 }
 
