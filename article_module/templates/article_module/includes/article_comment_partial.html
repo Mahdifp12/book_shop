@@ -1,0 +1,54 @@
+{% load thumbnail %}
+{% load poll_extras %}
+
+<h2>نظرات ({{ comments_count }})</h2>
+<ul class="media-list">
+    {% for comment in comments %}
+        <li class="media" id="singel_comment_box_{{ comment.id }}">
+            <a class="pull-right" href="#">
+                {% if comment.user.avatar %}
+                    {% thumbnail comment.user.avatar "121x86" quality=90 crop="center" as image %}
+                        <img class="media-object" src="{{ image.url }}" alt="">
+                    {% endthumbnail %}
+                {% else %}
+                    <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                {% endif %}
+            </a>
+            <div class="media-body">
+                <ul class="sinlge-post-meta">
+                    <li><i class="fa fa-user"></i>{{ comment.user }}</li>
+                    <li><i class="fa fa-clock-o"></i>{{ comment.create_date | t_jalali }}</li>
+                    <li><i class="fa fa-calendar"></i>{{ comment.create_date | d_jalali }}</li>
+                </ul>
+                <p>
+                    {{ comment.text }}
+                </p>
+                <a class="btn btn-primary" onclick="fillParentId({{ comment.id }})"><i class="fa fa-reply"></i>پاسـخ</a>
+            </div>
+        </li>
+        {% for answer in comment.articlecomment_set.all %}
+            <li class="media second-media" id="singel_comment_box_{{ comment.id }}">
+            <a class="pull-right" href="#">
+                {% if answer.user.avatar %}
+                    {% thumbnail answer.user.avatar "121x86" quality=90 crop="center" as image %}
+                        <img class="media-object" src="{{ image.url }}" alt="">
+                    {% endthumbnail %}
+                {% else %}
+                    <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                {% endif %}
+            </a>
+            <div class="media-body">
+                <ul class="sinlge-post-meta">
+                    <li><i class="fa fa-user"></i>{{ answer.user }}</li>
+                    <li><i class="fa fa-clock-o"></i>{{ answer.create_date | t_jalali }}</li>
+                    <li><i class="fa fa-calendar"></i>{{ answer.create_date | d_jalali }}</li>
+                </ul>
+                <p>
+                    {{ answer.text }}
+                </p>
+            </div>
+        </li>
+        {% endfor %}
+
+    {% endfor %}
+</ul>
