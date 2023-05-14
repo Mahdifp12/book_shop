@@ -70,11 +70,11 @@
 						</div>
 					</div><!--Comments-->
                     {% endif %}
-					<div class="response-area">
-						<h2>نظرات ({{ comments.count }})</h2>
+					<div class="response-area" id="comments_area">
+						<h2>نظرات ({{ comments_count }})</h2>
 						<ul class="media-list">
                             {% for comment in comments %}
-							    <li class="media">
+							    <li class="media"  id="singel_comment_box_{{ comment.id }}">
                                     <a class="pull-right" href="#">
                                         {% if comment.user.avatar %}
                                             {% thumbnail comment.user.avatar "121x86" quality=90 crop="center" as image %}
@@ -97,7 +97,7 @@
                                     </div>
 							    </li>
                                 {% for answer in comment.articlecomment_set.all %}
-                                    <li class="media second-media">
+                                    <li class="media second-media"  id="singel_comment_box_{{ comment.id }}">
                                     <a class="pull-right" href="#">
                                         {% if answer.user.avatar %}
                                             {% thumbnail answer.user.avatar "121x86" quality=90 crop="center" as image %}
