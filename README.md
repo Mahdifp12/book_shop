@@ -32,9 +32,11 @@ pip install -r requirements.txt
 
 ## Images :
 
-Reloader page :
+<a href="#load-page">Load page</a>
 
-<img src="/static/image/loader-img.gif" alt="home-page" title="Home Page">
+Load page :
+
+<img src="/static/image/loader-img.gif" alt="load-page" title="Load Page" id="load-page">
 
 Most of the points of the project are shown in the video below:
 
@@ -45,6 +47,4 @@ https://user-images.githubusercontent.com/86688824/221954004-418b8aa5-d20f-41fa-
 Books slider :
 
 <img src="/static/image/books_slider" alt="books-slider" title="Books Slider">
-
-
 
