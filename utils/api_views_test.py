@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from product.models import Book
-from .serializer import BookModelSerializer
+from api_book.serializer import BookModelSerializer
 
 
 # Create your views here.
