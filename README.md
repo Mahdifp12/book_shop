@@ -40,7 +40,7 @@ Load page :
 
 <img src="/static/image/loader-img.gif" alt="load-page" title="Load Page" id="load-page">
 
-<p id="video-project"> Most of the points of the project are shown in the video below </p>:
+<p id="video-project"> Most of the points of the project are shown in the video below : </p>
 
 
 https://user-images.githubusercontent.com/86688824/221954004-418b8aa5-d20f-41fa-b833-19d47afd3329.mp4
