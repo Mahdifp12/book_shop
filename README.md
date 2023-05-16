@@ -31,14 +31,16 @@ pip install -r requirements.txt
 [Apache license](https://www.apache.org/licenses/)
 
 ## Images :
+<a href="#load-page" style="font-weight: bold;">Load page</a> <br>
+<a href="#video-project" style="font-weight: bold;">Video project</a> <br>
+<a href="#book-slider" style="font-weight: bold;">Book Slider</a> <br>
 
-<a href="#load-page">Load page</a>
 
 Load page :
 
 <img src="/static/image/loader-img.gif" alt="load-page" title="Load Page" id="load-page">
 
-Most of the points of the project are shown in the video below:
+<p id="video-project"> Most of the points of the project are shown in the video below </p>:
 
 
 https://user-images.githubusercontent.com/86688824/221954004-418b8aa5-d20f-41fa-b833-19d47afd3329.mp4
@@ -46,5 +48,5 @@ https://user-images.githubusercontent.com/86688824/221954004-418b8aa5-d20f-41fa-
 
 Books slider :
 
-<img src="/static/image/books_slider" alt="books-slider" title="Books Slider">
+<img src="/static/image/books_slider" alt="books-slider" title="Books Slider" id="book-slider">
 
