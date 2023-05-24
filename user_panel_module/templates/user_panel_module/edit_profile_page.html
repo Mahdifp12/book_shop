@@ -1,0 +1,22 @@
+{% extends 'home_base/layout.html' %}
+{% load render_partial %}
+
+{% block title %}
+    ویرایش اطلاعات کاربری
+{% endblock %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <div class="container">
+    <div class="row">
+        {% render_partial 'user_panel_module.views.user_panel_menu_component' %}
+        <div class="col-md-8">
+            <form action="{% url 'edit_user_profie' %}" method="post">
+                {% csrf_token %}
+                {{ form }}
+            </form>
+        </div>
+    </div>
+    </div>
+    {% endif %}
+{% endblock %}
