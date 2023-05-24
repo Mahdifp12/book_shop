@@ -8,6 +8,7 @@ class User(AbstractUser):
     avatar = models.ImageField(upload_to="images/users_avatar", verbose_name="تصویر آواتار", null=True, blank=True)
     email_active_code = models.CharField(max_length=100, verbose_name="کد فعالسازی ایمیل")
     about_user = models.TextField(verbose_name="درباره کاربر", null=True, blank=True)
+    address = models.TextField(null=True, blank=True, verbose_name="آدرس")
 
     class Meta:
         verbose_name = "کاربر"
