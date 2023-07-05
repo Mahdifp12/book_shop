@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.utils.text import slugify
 from unidecode import unidecode
 
+
 # Create your models here.
 
 class BookCategory(models.Model):
@@ -13,6 +14,8 @@ class BookCategory(models.Model):
     is_active = models.BooleanField(default=False, verbose_name="فعال / غیر فعال")
 
     is_delete = models.BooleanField(default=False, verbose_name="حذف شده / حذف نشده")
+
+    parent = models.ForeignKey('BookCategory', null=True, on_delete=models.CASCADE, verbose_name="دسته بندی والد")
 
     def __str__(self):
         return f'({self.title}) - ({self.url_title})'
