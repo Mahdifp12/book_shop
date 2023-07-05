@@ -1,7 +1,8 @@
-from django.shortcuts import redirect
+from django.http import HttpRequest
+from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import ListView, DetailView
-from .models import Book
+from .models import Book, BookCategory
 
 
 class BookListView(ListView):
@@ -32,3 +33,10 @@ class BookFavorite(View):
         request.session['book_favorite'] = book.id
 
         return redirect(book.get_absolute_url())
+
+
+def book_categories_components(request: HttpRequest):
+    book_categories = BookCategory.objects.prefetch_related('bookcategories_set') \
+        .filter(is_active=True, parent_id=None)
+
+    return render(request, template_name="product/components/product_categories_component.html")
