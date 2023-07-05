@@ -10,7 +10,7 @@
                     <img src={{ image.url }}>
                 {% endthumbnail %}
             {% else %}
-                <img src="/static/image/shop/product.jpg" alt="">
+                <img src="/image/shop/product.jpg" alt="">
             {% endif %}
             <h2>تومان{{ product.price }}</h2>
             <a style="text-decoration: none" href={% url 'book-detail' slug=product.slug %}><p>{{ product.title }}</p></a>
