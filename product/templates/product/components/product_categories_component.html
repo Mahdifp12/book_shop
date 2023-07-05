@@ -1,0 +1,35 @@
+<h2>دسته بندی کتب</h2>
+<div class="panel-group category-products" id="accordian">
+    {% for book_category in book_categories %}
+        <div class="panel panel-default">
+    <div class="panel-heading">
+        <h4 class="panel-title">
+            {% if book_category.bookcategory_set.all %}
+                <a data-toggle="collapse" data-parent="#accordian" href="#{{ book_category.url_title }}">
+                    <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                    {{ book_category.title }}
+                </a>
+            {% else %}
+                <a href="{% url 'book-categories' category=book_category.url_title %}">
+                {{ book_category.title }}
+                </a>
+            {% endif %}
+        </h4>
+    </div>
+    {% if book_category.bookcategory_set %}
+        <div id="{{ book_category.url_title }}" class="panel-collapse collapse">
+            <div class="panel-body">
+                <ul>
+                    {% for category in book_category.bookcategory_set.all %}
+                        <li><a href="{% url 'book-categories' category=category.url_title %}">{{ category.title }}</a></li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+    {% endfor %}
+
+</div>
