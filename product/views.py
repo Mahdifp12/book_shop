@@ -12,6 +12,15 @@ class BookListView(ListView):
     ordering = ['-price']
     paginate_by = 5
 
+    def get_queryset(self):
+        query = super(BookListView, self).get_queryset()
+        query = query.filter(is_active=True)
+        category_name = self.kwargs.get("category")
+        if category_name is not None:
+            query = query.filter(category__url_title__iexact=category_name)
+
+        return query
+
 
 class BookDetailView(DetailView):
     template_name = "product/product_detail.html"
@@ -36,7 +45,11 @@ class BookFavorite(View):
 
 
 def book_categories_components(request: HttpRequest):
-    book_categories = BookCategory.objects.prefetch_related('bookcategories_set') \
+    book_categories = BookCategory.objects.prefetch_related('bookcategory_set') \
         .filter(is_active=True, parent_id=None)
 
-    return render(request, template_name="product/components/product_categories_component.html")
+    context = {
+        'book_categories': book_categories
+    }
+
+    return render(request, template_name="product/components/product_categories_component.html", context=context)
