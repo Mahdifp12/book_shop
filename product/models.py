@@ -25,6 +25,20 @@ class BookCategory(models.Model):
         verbose_name_plural = "دسته بندی کتاب ها"
 
 
+class BookAuthor(models.Model):
+    author_name = models.CharField(max_length=300, db_index=True, verbose_name="نام نویسنده")
+    url_name = models.CharField(max_length=300, db_index=True, verbose_name="اسم در URL")
+    is_active = models.BooleanField(default=False, verbose_name="فعال / غیر فعال")
+    is_delete = models.BooleanField(default=False, verbose_name="حذف شده / حذف نشده")
+
+    class Meta:
+        verbose_name = "نویسنده"
+        verbose_name_plural = "نویسندگان"
+
+    def __str__(self):
+        return self.author_name
+
+
 class Book(models.Model):
     title = models.CharField(max_length=300, verbose_name="عنوان")
 
@@ -36,6 +50,8 @@ class Book(models.Model):
         verbose_name="دسته بندی های کتاب",
 
     )
+
+    author = models.ForeignKey(BookAuthor, null=True, on_delete=models.CASCADE, verbose_name="نویسنده")
 
     price = models.IntegerField(null=True, verbose_name="قیمت")
 
