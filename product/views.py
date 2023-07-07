@@ -18,7 +18,7 @@ class BookListView(ListView):
         query = query.filter(is_active=True)
         query2 = query2.filter(is_active=True)
         category_name = self.kwargs.get("category")
-        author_name = self.kwargs.get("authorname")
+        author_name = self.kwargs.get("author_name")
         if category_name is not None:
             query = query.filter(category__url_title__iexact=category_name)
         if author_name is not None:
