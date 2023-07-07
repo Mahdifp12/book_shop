@@ -3,7 +3,7 @@
     <div class="brands-name">
         <ul class="nav nav-pills nav-stacked">
             {% for book_author in book_authors %}
-                <li><a href="{% url 'book-authors' authorname=book_author.url_name %}"> <span class="pull-left">
+                <li><a href="{% url 'book-authors' author_name=book_author.url_name %}"> <span class="pull-left">
                     {{ book_author.book_set.count }}</span>{{ book_author.author_name }}</a></li>
             {% endfor %}
     </div>
