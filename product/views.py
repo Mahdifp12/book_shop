@@ -2,7 +2,7 @@ from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import ListView, DetailView
-from .models import Book, BookCategory
+from .models import Book, BookCategory, BookAuthor
 
 
 class BookListView(ListView):
@@ -14,10 +14,17 @@ class BookListView(ListView):
 
     def get_queryset(self):
         query = super(BookListView, self).get_queryset()
+        query2 = super(BookListView, self).get_queryset()
         query = query.filter(is_active=True)
+        query2 = query2.filter(is_active=True)
         category_name = self.kwargs.get("category")
+        author_name = self.kwargs.get("authorname")
         if category_name is not None:
             query = query.filter(category__url_title__iexact=category_name)
+        if author_name is not None:
+            query2 = query2.filter(author__url_name__iexact=author_name)
+
+            return query2
 
         return query
 
@@ -53,3 +60,13 @@ def book_categories_components(request: HttpRequest):
     }
 
     return render(request, template_name="product/components/product_categories_component.html", context=context)
+
+
+def book_authors_components(request: HttpRequest):
+    book_authors = BookAuthor.objects.filter(is_active=True, is_delete=False)
+
+    context = {
+        'book_authors': book_authors
+    }
+
+    return render(request, "product/components/product_authors_components.html", context)
