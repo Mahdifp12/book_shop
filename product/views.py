@@ -2,7 +2,7 @@ from django.http import HttpRequest
 from django.shortcuts import redirect, render
 from django.views import View
 from django.views.generic import ListView, DetailView
-from .models import Book, BookCategory, BookAuthor
+from .models import Book, BookCategory, BookAuthor, Cart
 
 
 class BookListView(ListView):
@@ -49,6 +49,22 @@ class BookFavorite(View):
         request.session['book_favorite'] = book.id
 
         return redirect(book.get_absolute_url())
+
+
+class CartView(View):
+    template_name = "product/cart_page.html"
+
+    def get(self, request:HttpRequest, *args, **kwargs):
+        user = request.user
+        cart_items = Cart.objects.filter(user=user)
+        total_quantity = sum(item.book.price * item.quantity   for item in cart_items)
+        
+        context ={
+            "cart_items": cart_items,
+            "total_quantity": total_quantity
+        }
+        
+        return render(request, self.template_name, context)
 
 
 def book_categories_components(request: HttpRequest):
