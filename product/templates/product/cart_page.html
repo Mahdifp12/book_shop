@@ -1,0 +1,22 @@
+{% extends 'home_base/layout.html' %}
+
+{% block title %}
+    سبد خرید
+{% endblock  %}
+
+
+{% block content %}
+<h2>سبد خرید شما</h2>
+    <div class="cart-containers">
+        <ul>
+            {% for item in cart_items %}
+                <li class="cart-item">
+                    <span class="item-name">{{ item.book.name }}</span>
+                    <span class="item-quantity">تعداد: {{ item.quantity }}</span>
+                    <span class="item-price">قیمـت: {{ item.book.price }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p class="total-price">مجموع قیمـت: {{ total_quantity }}</p>
+    </div>
+{% endblock  %}
