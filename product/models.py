@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from unidecode import unidecode
-
+from book_account.models import User
 
 # Create your models here.
 
@@ -15,7 +15,7 @@ class BookCategory(models.Model):
 
     is_delete = models.BooleanField(default=False, verbose_name="حذف شده / حذف نشده")
 
-    parent = models.ForeignKey('BookCategory', null=True, on_delete=models.CASCADE, verbose_name="دسته بندی والد")
+    parent = models.ForeignKey('BookCategory', null=True, on_delete=models.CASCADE, verbose_name="دسته بندی والد", blank=True)
 
     def __str__(self):
         return f'({self.title}) - ({self.url_title})'
@@ -48,7 +48,6 @@ class Book(models.Model):
         BookCategory,
         related_name="book_categories",
         verbose_name="دسته بندی های کتاب",
-
     )
 
     author = models.ForeignKey(BookAuthor, null=True, on_delete=models.CASCADE, verbose_name="نویسنده")
@@ -91,3 +90,15 @@ class BookTag(models.Model):
 
     def __str__(self):
         return self.caption
+
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, verbose_name="کتاب")
+    quantity = models.PositiveIntegerField(default=1, verbose_name="مقدار محصول")
+
+    class Meta:
+        verbose_name = "سبد خرید"
+        verbose_name_plural = "سبد های خرید"
+
+    def __str__(self):
+        return f"{self.user} - {self.book}"
