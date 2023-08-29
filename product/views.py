@@ -1,7 +1,11 @@
-from django.http import HttpRequest
+from django.contrib import messages
+from django.http import HttpRequest, HttpResponseBadRequest
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from django.views import View
 from django.views.generic import ListView, DetailView
+
+from .forms import QuantityForm
 from .models import Book, BookCategory, BookAuthor, Cart
 
 
@@ -54,17 +58,57 @@ class BookFavorite(View):
 class CartView(View):
     template_name = "product/cart_page.html"
 
-    def get(self, request:HttpRequest, *args, **kwargs):
+    def get(self, request: HttpRequest, *args, **kwargs):
         user = request.user
         cart_items = Cart.objects.filter(user=user)
-        total_quantity = sum(item.book.price * item.quantity   for item in cart_items)
-        
-        context ={
+        total_quantity = sum(item.book.price * item.quantity for item in cart_items)
+
+        context = {
             "cart_items": cart_items,
             "total_quantity": total_quantity
         }
-        
+
         return render(request, self.template_name, context)
+
+
+class AddCartView(View):
+    def get(self, request: HttpRequest):
+        form = QuantityForm()
+
+        context = {
+            'form': form
+        }
+
+        return render(request, "product/product_detail.html", context)
+
+    def post(self, request: HttpRequest):
+        book_id = request.POST.get("book_id")
+        if book_id and request.user.is_authenticated:
+            try:
+                book = Book.objects.get(pk=book_id)
+            except Book.DoesNotExist:
+                return HttpResponseBadRequest("کتاب یافت نشد")
+
+            user = request.user
+            # quantity = form.cleaned_data['quantity']
+            try:
+                cart_item = Cart.objects.get(user=user, book=book)
+            except Cart.DoesNotExist:
+                cart_item = Cart(user=user, book=book)
+                cart_item.save()
+            else:
+                cart_item.quantity += 1
+                cart_item.save()
+        else:
+            return HttpResponseBadRequest("ورودی مجاز نیست / ثبت نام کنید یا وارد شوید")
+
+        messages.success(request, "کتاب با موفقیت به سبد خرید شما اضافه شد.")
+
+        return redirect(reverse("cart-page"))
+
+
+class DeleteCartView(View):  # in future
+    pass
 
 
 def book_categories_components(request: HttpRequest):
