@@ -11,12 +11,19 @@
         <ul>
             {% for item in cart_items %}
                 <li class="cart-item">
-                    <span class="item-name">{{ item.book.name }}</span>
+                    <span class="item-name">{{ item.book.title }}</span>
                     <span class="item-quantity">تعداد: {{ item.quantity }}</span>
                     <span class="item-price">قیمـت: {{ item.book.price }}</span>
                 </li>
             {% endfor %}
         </ul>
         <p class="total-price">مجموع قیمـت: {{ total_quantity }}</p>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     </div>
 {% endblock  %}
