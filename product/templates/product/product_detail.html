@@ -70,12 +70,14 @@
 										<span>قیمت : {{ book.price }}تومان </span>
 									</span>
 									<span>
-										<label></label>
-										<input type="text" class="search_box">
-										<button type="button" class="btn btn-fefault cart">
-											<i class="fa fa-shopping-cart"></i>
-											افـزودن به سبـد خریـد
-										</button>
+                                        <form method="post" action="{% url 'add-cart-page' %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="book_id" value="{{ book.id }}">
+                                            <button type="submit" class="btn btn-default cart">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                    افزودن به سبد خرید
+                                            </button>
+                                        </form>
 									</span>
 								</div>
                                 <div>
