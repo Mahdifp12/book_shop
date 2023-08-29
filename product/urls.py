@@ -8,5 +8,6 @@ urlpatterns = [
     path('book-favorite', views.BookFavorite.as_view(), name='book-favorite'),
     path('<slug:slug>', views.BookDetailView.as_view(), name='book-detail'),
     path('cart/', views.CartView.as_view(), name='cart-page'),
+    path('add-cart/', views.AddCartView.as_view(), name='add-cart-page'),
 
 ]
