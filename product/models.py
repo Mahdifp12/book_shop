@@ -4,6 +4,7 @@ from django.utils.text import slugify
 from unidecode import unidecode
 from book_account.models import User
 
+
 # Create your models here.
 
 class BookCategory(models.Model):
@@ -15,7 +16,8 @@ class BookCategory(models.Model):
 
     is_delete = models.BooleanField(default=False, verbose_name="حذف شده / حذف نشده")
 
-    parent = models.ForeignKey('BookCategory', null=True, on_delete=models.CASCADE, verbose_name="دسته بندی والد", blank=True)
+    parent = models.ForeignKey('BookCategory', null=True, on_delete=models.CASCADE, verbose_name="دسته بندی والد",
+                               blank=True)
 
     def __str__(self):
         return f'({self.title}) - ({self.url_title})'
@@ -90,6 +92,7 @@ class BookTag(models.Model):
 
     def __str__(self):
         return self.caption
+
 
 class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")
