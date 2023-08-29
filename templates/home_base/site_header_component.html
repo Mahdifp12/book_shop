@@ -52,15 +52,13 @@
                 {% endif %}
 		<a href="{% url 'user_panel_page' %}">پنل کتابخوان</a>
                 <a href="{% url 'create-profile-page' %}">پروفایل</a>
-                <a href="#">سبد خرید</a>
+                <a href="{% url 'cart-page' %}">سبد خرید</a>
                 <a href="{% url 'logout-page' %}">خروج</a>
 
             {% else %}
                 <a href="{% url 'register-page' %}">ثبت نام</a>
                 <a href="{% url 'login-page' %}">ورود</a>
             {% endif %}
-
-
 
         </nav>
     </div>
