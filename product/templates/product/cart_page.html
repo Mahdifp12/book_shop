@@ -14,6 +14,11 @@
                     <span class="item-name">{{ item.book.title }}</span>
                     <span class="item-quantity">تعداد: {{ item.quantity }}</span>
                     <span class="item-price">قیمـت: {{ item.book.price }}</span>
+                    <form action="{% url 'delete-from-cart' pk=item.pk %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.pk }}">
+                        <button type="submit">حذف از سبد خرید</button>
+                    </form>
                 </li>
             {% endfor %}
         </ul>
