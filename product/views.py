@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponseBadRequest
 from django.shortcuts import redirect, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import ListView, DetailView
-
+from django.views.generic import ListView, DetailView, DeleteView
+from django.contrib.auth.mixins import UserPassesTestMixin
 from .forms import QuantityForm
 from .models import Book, BookCategory, BookAuthor, Cart
 
@@ -107,8 +107,16 @@ class AddCartView(View):
         return redirect(reverse("cart-page"))
 
 
-class DeleteCartView(View):  # in future
-    pass
+class DeleteCartView(UserPassesTestMixin, DeleteView):  # in future
+    model = Cart
+    template_name = "product/cart_page.html"
+    success_url = reverse_lazy("cart-page")
+    context_object_name = "item"
+    raise_exception = True
+
+    def test_func(self):
+        self.object = self.get_object()
+        return self.object.user == self.request.user
 
 
 def book_categories_components(request: HttpRequest):
