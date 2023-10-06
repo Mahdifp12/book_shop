@@ -29,29 +29,10 @@
         </div>
 
     </div>
-    <style>
-      .dark-mode {
-        background-color: black;
-        text-decoration-color: black;
-        border-top-color: black;
-        --header-color: black;
-        color: white;
-      }
-      .light-mode {
-        background-color: white;
-        color: black;
-      }
-    </style>
-    <script>
-      function darkMode() {
-        var element = document.body;
-        element.classList.toggle("dark-mode");
-      }
-    </script>
+
     <div class="header-2">
 
         <nav class="navbar">
-            <button onclick="darkMode()">حالت شب</button>
             <a href="{% url 'book-list' %}">کتابخانه</a>
             <a href="{% url 'contact-us' %}">تماس با ما</a>
             <a href="{% url 'articles-page' %}">مقالات</a>
