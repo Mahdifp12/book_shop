@@ -100,7 +100,7 @@ class AddCartView(View):
                 cart_item.quantity += 1
                 cart_item.save()
         else:
-            return HttpResponseBadRequest("ورودی مجاز نیست / ثبت نام کنید یا وارد شوید")
+            return redirect(reverse("register-page"))
 
         messages.success(request, "کتاب با موفقیت به سبد خرید شما اضافه شد.")
 
